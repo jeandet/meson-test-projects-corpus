@@ -1,5 +1,5 @@
 FROM fedora:28
 
-RUN dnf install -y git cmake meson tar gzip unzip ninja-build
+RUN dnf install -y git cmake meson tar gzip unzip ninja-build xonsh
 
-CMD ["build.sh"]
+RUN build.xsh
