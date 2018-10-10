@@ -1,9 +1,11 @@
 #!/bin/xonsh
 
+import yaml
+
 class Project:
-  def __init__(self, name, git_url, branch='master'):
+  def __init__(self, name, url, branch='master'):
     self.name = name
-    self.git_url = git_url
+    self.git_url = url
     self.branch = branch
 
 projects = [
@@ -12,9 +14,11 @@ projects = [
 
 def build_project(project):
   build_folder = project.name + '/build'
-  ![git clone --single-branch -b @(project.branch) @(project.git_url) @(project.name)]
+  ![git clone --recursive --single-branch -b @(project.branch) @(project.git_url) @(project.name)]
   ![meson @(project.name) @(build_folder)]
   ![ninja -C @(build_folder)]
 
-for p in projects:
-  build_project(p)
+with open('projects.yml', 'r') as f:
+  projects = yaml.load(f.read())
+  for name,data in projects.items():
+    build_project(Project(name, **data))

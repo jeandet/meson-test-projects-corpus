@@ -1,0 +1,11 @@
+davd1:
+  url: https://code.videolan.org/videolan/dav1d
+
+cinnamon-desktop:
+  url: https://github.com/linuxmint/cinnamon-desktop
+
+GStreamer:
+  url: https://github.com/GStreamer/gst-build
+
+GLib:
+  url: https://gitlab.gnome.org/GNOME/glib.git
