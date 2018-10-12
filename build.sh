@@ -1,0 +1,1 @@
+docker run -i --rm -v${PWD}:/work jeandet/meson-test-projects-corpus-fedora-image xonsh /work/build.xsh -b -r /work/projects.yml
